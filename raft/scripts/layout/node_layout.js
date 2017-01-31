@@ -101,7 +101,9 @@ define([], function () {
                     // Description.
                     var desc = [];
                     desc.push("Node " + node.id);
-                    desc.push("Term: " + node.currentTerm());
+                    if(node.currentTerm() != null) {
+                      desc.push("Term: " + node.currentTerm());
+                    }
                     desc.push();
                     if (node.state() === "candidate") {
                         desc.push("Vote Count: " + node.voteCount());
@@ -201,7 +203,7 @@ define([], function () {
     };
 
     NodeLayout.prototype.layout = function (x, y, w, h) {
-        var i, j, node, entry, step, 
+        var i, j, node, entry, step,
             model = this.parent().model(),
             nodes = this.nodes(),
             angle = ANGLE[nodes.length];
@@ -239,7 +241,7 @@ define([], function () {
                 entry.w = ENTRY.w;
                 entry.h = ENTRY.h;
             }
-            
+
         }
     };
 
